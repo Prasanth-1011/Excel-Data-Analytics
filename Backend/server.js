@@ -11,7 +11,7 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-    origin: 'https://excel-data-analytics-seven.vercel.app',
+    origin: 'https://excel-data-analytics-hwcs838wy-siva-prasanths-projects.vercel.app',
     credentials: true
 }));
 app.use(express.json());
@@ -43,6 +43,7 @@ app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 
 });
+
 
 
 

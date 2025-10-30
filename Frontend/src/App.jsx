@@ -12,7 +12,7 @@ import IntermediateAdminPage from './components/Dashboard/IntermediateAdminPage'
 import UploadFile from './components/UploadFile';
 import DataVisualization from './components/DataVisualization';
 
-axios.defaults.baseURL = 'http://localhost:5000/api';
+axios.defaults.baseURL = 'https://excel-data-analytics-cxdv.onrender.com/api';
 axios.defaults.withCredentials = true;
 
 function App() {

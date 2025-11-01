@@ -10,6 +10,7 @@ import BoxPlotViz from './Visualizations/BoxPlotViz';
 import KPIDashboard from './Visualizations/KPIDashboard';
 import DecompositionTree from './Visualizations/DecompositionTree';
 import ChoroplethMap from './Visualizations/ChoroplethMap';
+import PieChartViz from './Visualizations/PieChartViz';
 
 function DataVisualization() {
     const { fileId } = useParams();
@@ -70,7 +71,7 @@ function DataVisualization() {
 
                 <div className="bg-white rounded-lg shadow mb-6">
                     <div className="flex flex-wrap border-b overflow-x-auto">
-                        {['table', 'bar', 'line', 'scatter', 'heatmap', 'pivot', 'box', 'kPI', 'tree', 'map'].map((viz) => (
+                        {['table', 'kPI', 'bar', 'line', 'pie', 'scatter', 'heatmap', 'pivot', 'box', 'tree', 'map'].map((viz) => (
                             <button
                                 key={viz}
                                 onClick={() => setActiveViz(viz)}
@@ -105,13 +106,14 @@ function DataVisualization() {
                             </div>
                         )}
 
+                        {activeViz === 'kPI' && <KPIDashboard data={parsedData} columns={columns} />}
                         {activeViz === 'bar' && <BarChartViz data={parsedData} columns={columns} onDownload={handleDownload} />}
+                        {activeViz === 'pie' && <PieChartViz data={parsedData} columns={columns} onDownload={handleDownload} />}
                         {activeViz === 'line' && <LineChartViz data={parsedData} columns={columns} onDownload={handleDownload} />}
                         {activeViz === 'scatter' && <ScatterPlotViz data={parsedData} columns={columns} onDownload={handleDownload} />}
                         {activeViz === 'heatmap' && <HeatmapViz data={parsedData} columns={columns} onDownload={handleDownload} />}
                         {activeViz === 'pivot' && <PivotTableViz data={parsedData} columns={columns} onDownload={handleDownload} />}
                         {activeViz === 'box' && <BoxPlotViz data={parsedData} columns={columns} onDownload={handleDownload} />}
-                        {activeViz === 'kPI' && <KPIDashboard data={parsedData} columns={columns} />}
                         {activeViz === 'tree' && <DecompositionTree data={parsedData} columns={columns} />}
                         {activeViz === 'map' && <ChoroplethMap data={parsedData} columns={columns} />}
                     </div>

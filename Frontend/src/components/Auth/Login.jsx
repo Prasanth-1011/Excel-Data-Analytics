@@ -10,6 +10,7 @@ function Login({ onLogin }) {
     });
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
+    const [passwordVisible, setPasswordVisible] = useState(false);
     const navigate = useNavigate();
 
     const handleChange = (e) => {
@@ -144,16 +145,34 @@ function Login({ onLogin }) {
                                     Forgot Password?
                                 </Link>
                             </div>
-                            <input
-                                type="password"
-                                name="password"
-                                value={formData.password}
-                                onChange={handleChange}
-                                placeholder="••••••••"
-                                required
-                                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
-                            />
+                            <div className="relative">
+                                <input
+                                    type={passwordVisible ? 'text' : 'password'}
+                                    name="password"
+                                    value={formData.password}
+                                    onChange={handleChange}
+                                    placeholder="••••••••"
+                                    required
+                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                                />
+                                <button
+                                    type="button"
+                                    onClick={() => setPasswordVisible(prev => !prev)}
+                                    className="absolute inset-y-0 right-3 flex items-center"
+                                >
+                                    {passwordVisible ? (
+                                        <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 3C7 3 3.1 6.3 2 9c1 2.7 5 6 10 6s9-3.3 10-6c-1-2.7-5-6-10-6zM12 14c-2.7 0-5-2.3-5-5s2.3-5 5-5 5 2.3 5 5-2.3 5-5 5z" />
+                                        </svg>
+                                    ) : (
+                                        <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 12s3-7 11-7 11 7 11 7-3 7-11 7-11-7-11-7z" />
+                                        </svg>
+                                    )}
+                                </button>
+                            </div>
                         </div>
+
 
                         <button
                             type="submit"

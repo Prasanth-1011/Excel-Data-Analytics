@@ -43,35 +43,64 @@ function Register({ onRegister }) {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-green-600 via-teal-700 to-blue-800 flex items-center justify-center p-4">
-            <div className="max-w-5xl w-full grid md:grid-cols-2 gap-0 bg-white rounded-2xl shadow-2xl overflow-hidden">
-
-                {/* Left side (information section) */}
-                <div className="bg-gradient-to-br from-green-500 to-teal-600 p-8 md:p-12 flex flex-col justify-center text-white">
+        <div className="min-h-screen flex items-center justify-center p-4">
+            <div className="max-w-4xl w-full grid lg:grid-cols-2 gap-0 bg-white rounded-2xl shadow-2xl overflow-hidden">
+                {/* Left side (banner section) */}
+                <div className="max-w-3xl rounded-b-none lg:rounded-r-none rounded-2xl bg-gradient-to-br from-blue-500 to-purple-600 p-10 md:p-16 flex flex-col justify-center text-white">
                     <div className="mb-8">
-                        <img
-                            src="https://www.zidio.in/assets/img/logo/logo.png"
-                            alt="Zidio Development"
-                            className="h-12 mb-6 bg-white px-4 py-2 rounded-lg"
-                        />
                         <h1 className="text-3xl md:text-4xl font-bold mb-4">
                             Join Excel Analytics
                         </h1>
-                        <p className="text-green-100 text-lg leading-relaxed">
+                        <p className="text-blue-100 text-md leading-relaxed">
                             Create your account and start analyzing data with powerful visualization tools.
                         </p>
                     </div>
 
                     {/* Feature Highlights */}
                     <div className="space-y-4">
-                        {/* Add your feature highlights here */}
+                        <div className="flex items-start space-x-3">
+                            <div className="bg-white bg-opacity-20 rounded-full p-2 mt-1">
+                                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                                    <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 className="font-semibold">Upload & Analyze</h3>
+                                <p className="text-sm text-blue-100">Upload Excel files and get instant insights</p>
+                            </div>
+                        </div>
+
+                        <div className="flex items-start space-x-3">
+                            <div className="bg-white bg-opacity-20 rounded-full p-2 mt-1">
+                                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 className="font-semibold">10 Visualizations</h3>
+                                <p className="text-sm text-blue-100">Charts, heatmaps, pivot tables & more</p>
+                            </div>
+                        </div>
+
+                        <div className="flex items-start space-x-3">
+                            <div className="bg-white bg-opacity-20 rounded-full p-2 mt-1">
+                                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 className="font-semibold">Role-Based Dashboards</h3>
+                                <p className="text-sm text-blue-100">Separate interfaces for users and admins</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 {/* Right side (form section) */}
-                <div className="p-4">
-                    <div className="mb-8">
-                        <h2 className="text-2xl font-bold text-gray-800 mb-2">Create Account</h2>
+                <div className="p-8 md:p-12">
+                    <div className="mb-6">
+                        <h2 className="text-3xl font-bold text-gray-800 mb-2">Create Account</h2>
                         <p className="text-gray-600">Fill in your details to get started</p>
                     </div>
 
@@ -85,12 +114,12 @@ function Register({ onRegister }) {
                     <form onSubmit={handleSubmit} className="space-y-4">
                         {/* Role Selection */}
                         <div>
-                            <label className="block text-sm font-semibold text-gray-700 mb-2">Register As</label>
+                            <label className="block text-sm font-semibold text-gray-700 mb-1">Register As</label>
                             <select
                                 name="role"
                                 value={formData.role}
                                 onChange={handleChange}
-                                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition"
+                                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition text-sm"
                             >
                                 <option value="user">User (Upload & Analyze)</option>
                                 <option value="admin">Admin (Requires Approval)</option>
@@ -99,7 +128,7 @@ function Register({ onRegister }) {
 
                         {/* Username Input */}
                         <div>
-                            <label className="block text-sm font-semibold text-gray-700 mb-2">Username</label>
+                            <label className="block text-sm font-semibold text-gray-700 mb-1">Username</label>
                             <input
                                 type="text"
                                 name="username"
@@ -107,13 +136,13 @@ function Register({ onRegister }) {
                                 onChange={handleChange}
                                 placeholder="Enter Username"
                                 required
-                                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition"
+                                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition text-sm"
                             />
                         </div>
 
                         {/* Email Input */}
                         <div>
-                            <label className="block text-sm font-semibold text-gray-700 mb-2">Email Address</label>
+                            <label className="block text-sm font-semibold text-gray-700 mb-1">Email Address</label>
                             <input
                                 type="email"
                                 name="email"
@@ -121,13 +150,13 @@ function Register({ onRegister }) {
                                 onChange={handleChange}
                                 placeholder="Enter Mail"
                                 required
-                                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition"
+                                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition text-sm"
                             />
                         </div>
 
                         {/* Password Input with Visibility Toggle */}
                         <div>
-                            <label className="block text-sm font-semibold text-gray-700 mb-2">Password</label>
+                            <label className="block text-sm font-semibold text-gray-700 mb-1">Password</label>
                             <div className="relative">
                                 <input
                                     type={passwordVisible ? 'text' : 'password'}
@@ -136,7 +165,7 @@ function Register({ onRegister }) {
                                     onChange={handleChange}
                                     placeholder="••••••••"
                                     required
-                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition"
+                                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition text-sm"
                                 />
                                 <button
                                     type="button"
@@ -158,7 +187,7 @@ function Register({ onRegister }) {
 
                         {/* Confirm Password Input with Visibility Toggle */}
                         <div>
-                            <label className="block text-sm font-semibold text-gray-700 mb-2">Confirm Password</label>
+                            <label className="block text-sm font-semibold text-gray-700 mb-1">Confirm Password</label>
                             <div className="relative">
                                 <input
                                     type={confirmPasswordVisible ? 'text' : 'password'}
@@ -167,7 +196,7 @@ function Register({ onRegister }) {
                                     onChange={handleChange}
                                     placeholder="••••••••"
                                     required
-                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition"
+                                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition text-sm"
                                 />
                                 <button
                                     type="button"
@@ -191,7 +220,7 @@ function Register({ onRegister }) {
                         <button
                             type="submit"
                             disabled={loading}
-                            className="w-full bg-gradient-to-r from-green-500 to-teal-600 text-white py-3 rounded-lg font-semibold hover:from-green-600 hover:to-teal-700 transition transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed shadow-lg mt-2"
+                            className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-3 rounded-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed shadow-lg mt-4"
                         >
                             {loading ? (
                                 <span className="flex items-center justify-center">
@@ -209,9 +238,9 @@ function Register({ onRegister }) {
 
                     {/* Sign In Link */}
                     <div className="mt-6 text-center">
-                        <p className="text-gray-600">
+                        <p className="text-gray-600 text-sm">
                             Already have an account?{' '}
-                            <Link to="/login" className="text-green-600 hover:text-teal-600 font-semibold transition">
+                            <Link to="/login" className="text-blue-600 hover:text-purple-600 font-semibold transition">
                                 Sign In
                             </Link>
                         </p>
@@ -219,8 +248,8 @@ function Register({ onRegister }) {
 
                     {/* Admin Note */}
                     {formData.role === 'admin' && (
-                        <div className="mt-6 bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded">
-                            <p className="text-sm text-yellow-800">
+                        <div className="mt-4 bg-yellow-50 border-l-4 border-yellow-400 p-3 rounded">
+                            <p className="text-xs text-yellow-800">
                                 <strong>Note:</strong> Admin accounts require approval from a root administrator before activation.
                             </p>
                         </div>

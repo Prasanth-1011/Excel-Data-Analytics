@@ -34,20 +34,15 @@ function Login({ onLogin }) {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-800 flex items-center justify-center p-4">
-            <div className="max-w-4xl w-full grid md:grid-cols-2 gap-0 bg-white rounded-2xl shadow-2xl overflow-hidden">
+        <div className="min-h-screen flex items-center justify-center p-4">
+            <div className="max-w-4xl w-full grid lg:grid-cols-2 gap-0 bg-white rounded-2xl shadow-2xl overflow-hidden">
 
-                <div className="bg-gradient-to-br from-blue-500 to-purple-600 p-8 md:p-12 flex flex-col justify-center text-white">
+                <div className="max-w-3xl rounded-b-none lg:rounded-r-none rounded-2xl bg-gradient-to-br from-blue-500 to-purple-600 p-10 md:p-16 flex flex-col justify-center text-white">
                     <div className="mb-8">
-                        <img
-                            src="https://www.zidio.in/assets/img/logo/logo.png"
-                            alt="Zidio Development"
-                            className="h-12 mb-6 bg-white px-4 py-2 rounded-lg"
-                        />
                         <h1 className="text-3xl md:text-4xl font-bold mb-4">
                             Excel Analytics Platform
                         </h1>
-                        <p className="text-blue-100 text-lg leading-relaxed">
+                        <p className="text-blue-100 text-md leading-relaxed">
                             Powerful data visualization and analytics tool designed for modern businesses.
                         </p>
                     </div>
@@ -130,7 +125,7 @@ function Login({ onLogin }) {
                                 name="email"
                                 value={formData.email}
                                 onChange={handleChange}
-                                placeholder="you@example.com"
+                                placeholder="Enter Mail"
                                 required
                                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
                             />
@@ -185,7 +180,7 @@ function Login({ onLogin }) {
                                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
                                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                                     </svg>
-                                    Signing in...
+                                    Signing In...
                                 </span>
                             ) : (
                                 'Sign In'

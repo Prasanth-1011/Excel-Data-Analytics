@@ -10,6 +10,8 @@ function ForgotPassword() {
         newPassword: '',
         confirmPassword: ''
     });
+    const [newPasswordVisible, setNewPasswordVisible] = useState(false);
+    const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
@@ -68,20 +70,16 @@ function ForgotPassword() {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-purple-600 via-blue-700 to-indigo-800 flex items-center justify-center p-4">
-            <div className="max-w-4xl w-full grid md:grid-cols-2 gap-0 bg-white rounded-2xl shadow-2xl overflow-hidden">
+        <div className="min-h-screen flex items-center justify-center p-4">
+            <div className="max-w-4xl w-full grid lg:grid-cols-2 gap-0 bg-white rounded-2xl shadow-2xl overflow-hidden">
 
-                <div className="bg-gradient-to-br from-purple-500 to-indigo-600 p-8 md:p-12 flex flex-col justify-center text-white">
+                {/* Left side (banner section) */}
+                <div className="max-w-3xl rounded-b-none lg:rounded-r-none rounded-2xl bg-gradient-to-br from-blue-500 to-purple-600 p-10 md:p-16 flex flex-col justify-center text-white">
                     <div className="mb-8">
-                        <img
-                            src="https://www.zidio.in/assets/img/logo/logo.png"
-                            alt="Zidio Development"
-                            className="h-12 mb-6 bg-white px-4 py-2 rounded-lg"
-                        />
                         <h1 className="text-3xl md:text-4xl font-bold mb-4">
                             Reset Password
                         </h1>
-                        <p className="text-purple-100 text-lg leading-relaxed">
+                        <p className="text-blue-100 text-md leading-relaxed">
                             Verify your identity and set a new password for your account.
                         </p>
                     </div>
@@ -89,25 +87,25 @@ function ForgotPassword() {
                     <div className="space-y-4">
                         <div className="flex items-start space-x-3">
                             <div className={`${step >= 1 ? 'bg-white' : 'bg-white bg-opacity-20'} rounded-full p-2 mt-1`}>
-                                <svg className={`w-5 h-5 ${step >= 1 ? 'text-purple-600' : 'text-white'}`} fill="currentColor" viewBox="0 0 20 20">
+                                <svg className={`w-5 h-5 ${step >= 1 ? 'text-blue-600' : 'text-white'}`} fill="currentColor" viewBox="0 0 20 20">
                                     <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
                                 </svg>
                             </div>
                             <div>
                                 <h3 className="font-semibold">Step 1: Verify Identity</h3>
-                                <p className="text-sm text-purple-100">Enter your username and email</p>
+                                <p className="text-sm text-blue-100">Enter your username and email</p>
                             </div>
                         </div>
 
                         <div className="flex items-start space-x-3">
                             <div className={`${step >= 2 ? 'bg-white' : 'bg-white bg-opacity-20'} rounded-full p-2 mt-1`}>
-                                <svg className={`w-5 h-5 ${step >= 2 ? 'text-purple-600' : 'text-white'}`} fill="currentColor" viewBox="0 0 20 20">
+                                <svg className={`w-5 h-5 ${step >= 2 ? 'text-blue-600' : 'text-white'}`} fill="currentColor" viewBox="0 0 20 20">
                                     <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
                                 </svg>
                             </div>
                             <div>
                                 <h3 className="font-semibold">Step 2: New Password</h3>
-                                <p className="text-sm text-purple-100">Set your new secure password</p>
+                                <p className="text-sm text-blue-100">Set your new secure password</p>
                             </div>
                         </div>
 
@@ -119,14 +117,15 @@ function ForgotPassword() {
                             </div>
                             <div>
                                 <h3 className="font-semibold">Complete</h3>
-                                <p className="text-sm text-purple-100">Login with new password</p>
+                                <p className="text-sm text-blue-100">Login with new password</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div className="p-8 md:p-12">
-                    <div className="mb-8">
+                {/* Right side (form section) */}
+                <div className="p-8 md:p-12 flex flex-col justify-center">
+                    <div className="mb-6">
                         <h2 className="text-3xl font-bold text-gray-800 mb-2">
                             {step === 1 ? 'Verify Your Identity' : 'Set New Password'}
                         </h2>
@@ -143,9 +142,9 @@ function ForgotPassword() {
                     )}
 
                     {step === 1 ? (
-                        <form onSubmit={handleVerify} className="space-y-5">
+                        <form onSubmit={handleVerify} className="space-y-4">
                             <div>
-                                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                                <label className="block text-sm font-semibold text-gray-700 mb-1">
                                     Username
                                 </label>
                                 <input
@@ -155,12 +154,12 @@ function ForgotPassword() {
                                     onChange={handleChange}
                                     placeholder="Enter your username"
                                     required
-                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition"
+                                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition text-sm"
                                 />
                             </div>
 
                             <div>
-                                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                                <label className="block text-sm font-semibold text-gray-700 mb-1">
                                     Email Address
                                 </label>
                                 <input
@@ -170,14 +169,14 @@ function ForgotPassword() {
                                     onChange={handleChange}
                                     placeholder="Enter your registered email"
                                     required
-                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition"
+                                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition text-sm"
                                 />
                             </div>
 
                             <button
                                 type="submit"
                                 disabled={loading}
-                                className="w-full bg-gradient-to-r from-purple-500 to-indigo-600 text-white py-3 rounded-lg font-semibold hover:from-purple-600 hover:to-indigo-700 transition transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
+                                className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-3 rounded-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed shadow-lg mt-2"
                             >
                                 {loading ? (
                                     <span className="flex items-center justify-center">
@@ -193,47 +192,81 @@ function ForgotPassword() {
                             </button>
                         </form>
                     ) : (
-                        <form onSubmit={handleResetPassword} className="space-y-5">
-                            <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-4">
-                                <p className="text-sm text-green-800">
+                        <form onSubmit={handleResetPassword} className="space-y-4">
+                            <div className="bg-green-50 border border-green-200 rounded-lg p-3 mb-2">
+                                <p className="text-xs text-green-800 font-medium">
                                     ✓ Identity verified! Now set your new password.
                                 </p>
                             </div>
 
                             <div>
-                                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                                <label className="block text-sm font-semibold text-gray-700 mb-1">
                                     New Password
                                 </label>
-                                <input
-                                    type="password"
-                                    name="newPassword"
-                                    value={formData.newPassword}
-                                    onChange={handleChange}
-                                    placeholder="Enter new password (min 6 characters)"
-                                    required
-                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition"
-                                />
+                                <div className="relative">
+                                    <input
+                                        type={newPasswordVisible ? 'text' : 'password'}
+                                        name="newPassword"
+                                        value={formData.newPassword}
+                                        onChange={handleChange}
+                                        placeholder="Enter new password (min 6 characters)"
+                                        required
+                                        className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition text-sm"
+                                    />
+                                    <button
+                                        type="button"
+                                        onClick={() => setNewPasswordVisible(prev => !prev)}
+                                        className="absolute inset-y-0 right-3 flex items-center"
+                                    >
+                                        {newPasswordVisible ? (
+                                            <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 3C7 3 3.1 6.3 2 9c1 2.7 5 6 10 6s9-3.3 10-6c-1-2.7-5-6-10-6zM12 14c-2.7 0-5-2.3-5-5s2.3-5 5-5 5 2.3 5 5-2.3 5-5 5z" />
+                                            </svg>
+                                        ) : (
+                                            <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 12s3-7 11-7 11 7 11 7-3 7-11 7-11-7-11-7z" />
+                                            </svg>
+                                        )}
+                                    </button>
+                                </div>
                             </div>
 
                             <div>
-                                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                                <label className="block text-sm font-semibold text-gray-700 mb-1">
                                     Confirm New Password
                                 </label>
-                                <input
-                                    type="password"
-                                    name="confirmPassword"
-                                    value={formData.confirmPassword}
-                                    onChange={handleChange}
-                                    placeholder="Re-enter new password"
-                                    required
-                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition"
-                                />
+                                <div className="relative">
+                                    <input
+                                        type={confirmPasswordVisible ? 'text' : 'password'}
+                                        name="confirmPassword"
+                                        value={formData.confirmPassword}
+                                        onChange={handleChange}
+                                        placeholder="Re-enter new password"
+                                        required
+                                        className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition text-sm"
+                                    />
+                                    <button
+                                        type="button"
+                                        onClick={() => setConfirmPasswordVisible(prev => !prev)}
+                                        className="absolute inset-y-0 right-3 flex items-center"
+                                    >
+                                        {confirmPasswordVisible ? (
+                                            <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 3C7 3 3.1 6.3 2 9c1 2.7 5 6 10 6s9-3.3 10-6c-1-2.7-5-6-10-6zM12 14c-2.7 0-5-2.3-5-5s2.3-5 5-5 5 2.3 5 5-2.3 5-5 5z" />
+                                            </svg>
+                                        ) : (
+                                            <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 12s3-7 11-7 11 7 11 7-3 7-11 7-11-7-11-7z" />
+                                            </svg>
+                                        )}
+                                    </button>
+                                </div>
                             </div>
 
                             <button
                                 type="submit"
                                 disabled={loading}
-                                className="w-full bg-gradient-to-r from-purple-500 to-indigo-600 text-white py-3 rounded-lg font-semibold hover:from-purple-600 hover:to-indigo-700 transition transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
+                                className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-3 rounded-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed shadow-lg mt-2"
                             >
                                 {loading ? (
                                     <span className="flex items-center justify-center">
@@ -251,7 +284,7 @@ function ForgotPassword() {
                             <button
                                 type="button"
                                 onClick={() => setStep(1)}
-                                className="w-full bg-gray-200 text-gray-700 py-3 rounded-lg font-semibold hover:bg-gray-300 transition"
+                                className="w-full bg-gray-100 text-gray-700 py-2.5 rounded-lg font-semibold hover:bg-gray-200 transition text-sm"
                             >
                                 Back to Verification
                             </button>
@@ -259,7 +292,7 @@ function ForgotPassword() {
                     )}
 
                     <div className="mt-6 text-center">
-                        <Link to="/login" className="text-purple-600 hover:text-indigo-600 font-semibold transition flex items-center justify-center gap-2">
+                        <Link to="/login" className="text-blue-600 hover:text-purple-600 font-semibold transition text-sm flex items-center justify-center gap-2">
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                             </svg>
@@ -272,4 +305,4 @@ function ForgotPassword() {
     );
 }
 
-export default ForgotPassword;
+export default ForgotPassword;
